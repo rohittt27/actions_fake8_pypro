@@ -2,7 +2,7 @@ name: Code coverage Py
 
 on:
   push:
-    branches: [ "dev" , "feature/01-calculation_pro"]
+    branches: [ "dev", "feature/01-calculation_pro" ]
   pull_request:
     branches: [ "dev" ]
 
@@ -11,20 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python version
-      uses: actions/setup-python@v3
-      with:
-        python-version: 3.8
+      - uses: actions/checkout@v3
+      - name: Set up Python version
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
 
-    - name: Install Dependencies
+      - name: Install Dependencies
         run: |
           pip install -r requirements.txt
 
-    - name: Rub tests
+      - name: Run tests
         run: |
           pytest
       
-    - name: Run code coverage
+      - name: Run code coverage
         run: |
+          coverage run -m pytest
           coverage report -m
