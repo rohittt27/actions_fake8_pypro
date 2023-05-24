@@ -11,18 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Source code
-      - uses: actions/checkout@v3
-      - name: Set up Python version
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
+    - uses: actions/checkout@v3
+    - name: Set up Python version
+      uses: actions/setup-python@v3
+      with:
+        python-version: 3.8
 
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
+    - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
 
-      - name: Rub tests
-        run: pytest
+    - name: Rub tests
+        run: |
+          pytest
       
       - name: Run code coverage
-        run: coverage report -m
+        run: |
+          coverage report -m
