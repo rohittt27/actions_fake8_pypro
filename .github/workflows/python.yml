@@ -25,6 +25,6 @@ jobs:
         run: |
           pytest
       
-      - name: Run code coverage
+    - name: Run code coverage
         run: |
           coverage report -m
