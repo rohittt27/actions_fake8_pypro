@@ -1,15 +1,10 @@
-name : code formatting
+name: Code coverage Py
 
 on:
   push:
-    branches:
-      - feature/01-calculation_pro
-  push:
-    branches:
-      - dev
-  pull:
-    branches:
-      - dev
+    branches: [ "dev" , "feature/01-calculation_pro"]
+  pull_request:
+    branches: [ "dev" ]
 
 jobs:
   build:
