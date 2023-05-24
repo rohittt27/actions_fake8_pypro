@@ -1,0 +1,34 @@
+name : code formatting
+
+on:
+  push:
+    branches:
+      - feature/01-calculation_pro
+  push:
+    branches:
+      - dev
+  pull:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python Version
+        uses: actions/setup-python@3
+        with:
+          python-version: 3.8
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Rub tests
+        run: pytest
+      
+      - name: Run code coverage
+        run: coverage report -m
